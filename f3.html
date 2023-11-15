@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenization History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(5, 5, 69);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .history-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .file-name {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .datetime {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content here -->
+</head>
+<body>
+    <main>
+        <h2>Tokenization History</h2>
+        
+        {% for history_item in tokenization_history %}
+            <div class="history-item">
+                <label>File Name:</label>
+                <p class="file-name">{{ history_item.file_name }}</p>
+
+                <label>File Size:</label>
+                <p>{{ history_item.file_size }}</p>
+
+                <label>Datetime:</label>
+                <p class="datetime">{{ history_item.datetime|date:"Y-m-d H:i:s" }}</p>
+            </div>
+        {% endfor %}
+    </main>
+</body>
+</html>
+
+    </main>
+</body>
+</html>

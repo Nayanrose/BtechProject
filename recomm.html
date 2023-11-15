@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+           
+            background-size: 45%;
+            width: 100%;
+            background-position: center;
+            color: #eae2e2; /* Set text color to white for better visibility on the background */
+            width: 50%;
+            background-repeat: no-repeat;
+            background-color: rgb(12, 12, 13);
+        }
+
+       
+        .search-container {
+            position: relative;
+            z-index: 2; /* Ensure the search container is above the background color */
+            text-align: center;
+            background-image: url('block11.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 1200px;
+            height: 300px;
+            background-position: center;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            
+        }
+        .content-container {
+            position: relative;
+            z-index: 1; /* Ensure the content container is above the background image */
+            margin: 20px;
+            padding: 20px;
+           
+        }
+        .search-bar {
+            padding: 10px;
+            font-size: 16px;
+            width: 55%;
+            position: relative;
+            margin-bottom: 10px; /* Optional: Adjust spacing */
+            bottom: -150px;
+            border-radius: 10px;
+            
+        }
+
+        h1 {
+            color: azure;
+            background-color:rgb(17, 16, 18);
+            width: auto;
+            z-index: 2;
+        }
+
+        .media-container {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .media-item {
+            width: 300px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            overflow: visible;
+            display: inline-block;
+        }
+
+        video, audio {
+            width: 100%;
+            height: 180px;
+            object-fit: scale-down;
+            background-color: rgb(18, 27, 27);
+            
+        }
+
+        .file-link {
+            display: block;
+            padding: 10px;
+            text-decoration: hotpink;
+            color: #f11111;
+            background-color: #282525;
+            text-align: center;
+        }
+        .view-more-btn:hover::after{
+            color: white;
+            background-color: #3498db;
+            transform: rotate(10deg);
+        }
+
+        .view-more-btn {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #889aae;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            
+        }
+        .navbtn button{
+            text-align: center; 
+            font-size: 19px;
+            position: relative;
+            background: none;
+            border: none;
+        }
+        .navbtn a{
+            color: white;
+            text-decoration: none;
+        }
+        .navbtn a:hover{
+            color: rgb(135, 208, 222);
+        }
+    </style>
+</head>
+<body>
+    <h1>Media Showcase</h1>
+    <div class="navbtn" >
+
+        <button><a href="#vd">Videos</a></button> 
+        <button><a href="#fi">Files</a></button> 
+        <button><a href="#ph">Photos</a> </button>
+        <button><a href="#mu">Music</a></button>
+        <button><a href="#pa">Paintings</a></button> 
+    </div>
+    
+    <div class="search-container">
+        <!-- Add your search bar and any other elements here -->
+        
+        <input type="text" class="search-bar" id="searchInput" placeholder="Search...🔍">
+
+        
+        <!-- Add other search-related elements as needed -->
+    </div>
+   
+
+   
+    <!-- Videos -->
+    <h3 id="vd">VIDEOS</h3>
+    
+    <div class="media-container">
+        {% for video in videos %}
+        <div class="media-item">
+            <video controls>
+                <source src="{{ video.file_path.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="view-more-btn" id="" onclick="loadMore('video')">View More Videos</button>
+
+    <!-- Files -->
+    <h3 id="fi">FILES</h3>
+    <div class="media-container">
+        {% for Files in files %}
+        <div class="media-item">
+            <audio controls>
+                <source src="{{ audio.file_path.url }}" type="document/.Files">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="view-more-btn" onclick="loadMore('audio')">View More Files</button>
+
+    <!-- Photos -->
+    <h3 id="ph">PHOTOS</h3>
+    <div class="media-container">
+        {% for photo in photos %}
+        <div class="media-item">
+            <img src="{{ photo.file_path.url }}" alt="{{ photo.title }}" style="width: 100%; height: 180px; object-fit: cover;">
+        </div>
+        {% endfor %}
+    </div>
+    <button class="view-more-btn" onclick="loadMore('photo')">View More Photos</button>
+
+    <!-- Music -->
+    <h3 id="mu">MUSIC</h3>
+    <div class="media-container">
+        {% for track in music %}
+        <div class="media-item">
+            <audio controls>
+                <source src="{{ track.file_path.url }}" type="audio/mp3">
+                Your browser does not support the audio tag.
+            </audio>
+        </div>
+        {% endfor %}
+    </div>
+    <button class="view-more-btn" onclick="loadMore('music')">View More Music</button>
+
+
+        <!-- paintings -->
+    <h3 id="pa">PAINTINGS</h3>
+    <div class="media-container">
+        {% for photo in photos %}
+        <div class="media-item">
+            <img src="{{ photo.file_path.url }}" alt="{{ photo.title }}" style="width: 100%; height: 180px; object-fit: cover;">
+        </div>
+        {% endfor %}
+    </div>
+    <button class="view-more-btn" onclick="loadMore('photo')">View More Photos</button>
+
+
+    <script>
+        function filterMedia() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase();
+            const mediaItems = document.querySelectorAll('.media-item');
+
+            mediaItems.forEach(item => {
+                const title = item.querySelector('img') ? item.querySelector('img').alt.toLowerCase() : '';
+                const source = item.querySelector('source') ? item.querySelector('source').src.toLowerCase() : '';
+
+                if (title.includes(searchTerm) || source.includes(searchTerm)) {
+                    item.style.display = 'inline-block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function handleEnterKey(event) {
+            if (event.key === 'Enter') {
+                filterMedia();
+                document.getElementById('searchInput').value = ''; // Clear the search input
+            }
+        }
+
+        // Attach the filterMedia function to the input's "input" event
+        document.getElementById('searchInput').addEventListener('input', filterMedia);
+
+        // Attach the handleEnterKey function to the input's "keydown" event
+        document.getElementById('searchInput').addEventListener('keydown', handleEnterKey);
+  
+        function loadMore(mediaType) {
+            const url = "{% url 'media_showcase' %}";
+            const offset = document.querySelectorAll(`.${mediaType}-item`).length;
+
+            // Make an AJAX request
+            fetch(`${url}?offset=${offset}&media_type=${mediaType}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        // No more items to load
+                        document.querySelector(`.view-more-btn[data-media-type="${mediaType}"]`).style.display = 'none';
+                        return;
+                    }
+
+                    appendItems(data, mediaType);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function appendItems(data, mediaType) {
+            // Append new items to the media container
+            const mediaContainer = document.querySelector(`.${mediaType}-container`);
+
+            data.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = `media-item ${mediaType}-item`;
+
+                if (mediaType === 'video') {
+                    itemElement.innerHTML = `<video controls><source src="${item.file_path.url}" type="video/mp4">Your browser does not support the video tag.</video>`;
+                } else if (mediaType === 'audio') {
+                    itemElement.innerHTML = `<audio controls><source src="${item.file_path.url}" type="audio/mp3">Your browser does not support the audio tag.</audio>`;
+                } else if (mediaType === 'photo') {
+                    itemElement.innerHTML = `<img src="${item.file_path.url}" alt="${item.title}" style="width: 100%; height: 180px; object-fit: cover;">`;
+                } else if (mediaType === 'music') {
+                    itemElement.innerHTML = `<audio controls><source src="${item.file_path.url}" type="audio/mp3">Your browser does not support the audio tag.</audio>`;
+                }
+
+                mediaContainer.appendChild(itemElement);
+            });
+        }
+    </script>
+</body>
+</html>

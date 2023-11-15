@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tokenization in Blockchain</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #081952;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #081952;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(4, 241, 24, 0.1);
+            height: 200px;
+        }
+
+        h2 {
+            color: #cdc8c8;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        #uploadButton {
+            background-color: #4caf50;
+            color: white;
+            width: 100px;
+            height: 100px;
+        }
+
+        #convertButton, #generateButton, #historyButton {
+            background-color: #0e4580;
+            color: white;
+        }
+
+        #alertBox {
+            background-color: #b8a4a4;
+            padding: 10px;
+            margin-top: 20px;
+            display: none;
+            width: 100px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tokenization in MediaVault</h1>
+    </header>
+    <main>
+        <h2>Get Tokens</h2>
+        
+        <input type="file" id="fileInput" accept=".pdf, .doc, .docx">
+
+        <button id="convertButton" onclick="showAlert('Converted!')">Convert</button>
+        <button id="generateButton" onclick="showAlert('Token Generated!')">Token Generated</button>
+        <button id="historyButton">Token History</button>
+        <a href="f3.html" button onclick="historyButton">Token History</a>
+
+        <div id="alertBox"></div>
+    </main>
+
+    <script>
+        function showAlert(message) {
+            var alertBox = document.getElementById('alertBox');
+            alertBox.innerHTML = message;
+            alertBox.style.display = 'block';
+
+            // Hide the alert after 2 seconds (2000 milliseconds)
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+.body{
+    background-color: rgb(48, 12, 81);
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+input[type="submit"] {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.continue-with-email, .log-in {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 20px;
+}
+
